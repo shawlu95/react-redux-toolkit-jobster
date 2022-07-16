@@ -1,3 +1,5 @@
+import AreaChart from './AreaChart';
+import BarChart from './BarChart';
 import BigSidebar from './BigSidebar';
 import ChartsContainer from './ChartsContainer';
 import FormRow from './FormRow';
@@ -11,6 +13,8 @@ import SmallSidebar from './SmallSidebar';
 import StatsContainer from './StatsContainer';
 
 export {
+  AreaChart,
+  BarChart,
   BigSidebar,
   ChartsContainer,
   FormRow,
