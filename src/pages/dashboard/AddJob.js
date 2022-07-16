@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { FormRow, FormRowSelect } from '../../components';
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
@@ -27,6 +28,7 @@ const AddJob = () => {
   const { user } = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isEditing) {
@@ -55,6 +57,7 @@ const AddJob = () => {
           },
         })
       );
+      navigate('/all-jobs');
       return;
     }
 
