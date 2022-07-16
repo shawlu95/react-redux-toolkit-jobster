@@ -2,7 +2,13 @@ import customFetch from '../../utils/axios';
 
 export const getAllJobsThunk = async (_, thunkApi) => {
   try {
-    const res = await customFetch.get('/jobs');
+    const { page, search, searchStatus, searchType, sort } =
+      thunkApi.getState().allJobs;
+    let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`;
+    if (search) {
+      url += `&search=${search}`;
+    }
+    const res = await customFetch.get(url);
     return res.data;
   } catch (err) {
     return thunkApi.rejectWithValue('Failed to retrieve jobs');
