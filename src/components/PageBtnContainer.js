@@ -3,6 +3,7 @@ import React from 'react';
 import { HiChevronDoubleLeft, HiChevronDoubleRight } from 'react-icons/hi';
 import Wrapper from '../assets/wrappers/PageBtnContainer';
 import { useSelector, useDispatch } from 'react-redux';
+import { changePage } from '../features/allJobs/allJobsSlice';
 
 const PageBtnContainer = () => {
   const { numOfPages, page } = useSelector((store) => store.allJobs);
@@ -14,8 +15,12 @@ const PageBtnContainer = () => {
     return index + 1;
   });
 
-  const nextPage = () => {};
-  const prevPage = () => {};
+  const nextPage = () => {
+    dispatch(changePage(Math.min(page + 1, numOfPages)));
+  };
+  const prevPage = () => {
+    dispatch(changePage(Math.max(page - 1, 1)));
+  };
 
   return (
     <Wrapper>
@@ -29,7 +34,7 @@ const PageBtnContainer = () => {
             type='button'
             key={pageNumber}
             className={pageNumber === page ? 'pageBtn active' : 'pageBtn'}
-            onClick={() => console.log('set page')}
+            onClick={() => dispatch(changePage(pageNumber))}
           >
             {pageNumber}
           </button>
