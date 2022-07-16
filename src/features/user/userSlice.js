@@ -20,19 +20,12 @@ const initialState = {
 
 export const registerUser = createAsyncThunk(
   'user/registerUser',
-  (user, thunkApi) => {
-    return registerUserThunk(user, thunkApi);
-  }
+  registerUserThunk
 );
 
-export const loginUser = createAsyncThunk('user/loginUser', (user, thunkApi) =>
-  loginUserThunk(user, thunkApi)
-);
+export const loginUser = createAsyncThunk('user/loginUser', loginUserThunk);
 
-export const updateUser = createAsyncThunk(
-  'user/updateUser',
-  (user, thunkApi) => updateUserThunk(user, thunkApi)
-);
+export const updateUser = createAsyncThunk('user/updateUser', updateUserThunk);
 
 const userSlice = createSlice({
   name: 'user',
