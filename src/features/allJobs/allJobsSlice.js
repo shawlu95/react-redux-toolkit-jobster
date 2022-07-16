@@ -37,6 +37,8 @@ const allJobsSlice = createSlice({
       state.isLoading = false;
     },
     handleChange: (state, { payload: { name, value } }) => {
+      // reset page when changing filter
+      state.page = 1;
       state[name] = value;
     },
     clearFilters: (state) => {
